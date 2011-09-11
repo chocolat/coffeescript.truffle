@@ -1,0 +1,9 @@
+(name [Function (bound)])
+
+(trigger
+    (tab bfun))
+
+(only-in source.coffee)
+
+(snippet [(%{1="args"}) =>
+  %{0="# body..."}])

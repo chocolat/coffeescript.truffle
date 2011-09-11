@@ -1,0 +1,24 @@
+(trigger
+    (key [[shift][cmd]"]))
+
+(name [Insert Heredoc """ quotes])
+
+(only-in source.coffee)
+
+(input nothing line)
+
+(output snippet)
+
+(save nothing)
+
+(script [#!/usr/bin/env ruby
+
+column_number = ENV['TM_COLUMN_NUMBER']
+whitespace    = " " * (column_number.to_i - 1)
+
+print <<-EOS
+"""
+#{whitespace}$0
+#{whitespace}"""
+EOS
+])

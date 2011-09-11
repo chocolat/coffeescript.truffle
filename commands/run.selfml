@@ -1,0 +1,16 @@
+(trigger
+    (key [[cmd]R]))
+
+(name Run)
+
+(only-in source.coffee)
+
+(input selection)
+
+(output html)
+
+(save nothing)
+
+(script [#!/bin/bash
+
+${TM_COFFEE:=coffee} -s | pre])

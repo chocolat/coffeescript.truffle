@@ -1,0 +1,9 @@
+(name [Interpolated Code])
+
+(trigger
+    (key [[shift]#])
+    (tab [#]))
+
+(only-in [(string.quoted.double.coffee) - string source, (string.quoted.double.heredoc.coffee) - string source])
+
+(snippet [#{%{1="%{TM_SELECTED_TEXT}"}}])

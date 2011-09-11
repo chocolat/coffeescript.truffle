@@ -1,0 +1,5 @@
+(menu
+    (submenu Run command.run command.compile-and-display-js command.run-selected-text)
+    (submenu Control snippet.if snippet.if-__-else snippet.else-if snippet.ternary-if snippet.unless)
+    (submenu Constructs command.new-function snippet.function snippet.bound-function snippet.array-comprehension snippet.object-comprehension [snippet.range-comprehension-(exclusive)] [snippet.range-comprehension-(inclusive)] snippet.switch snippet.class snippet.try-__-catch)
+    (submenu Other command.insert-heredoc-triple-double-quotes command.insert-heredoc-triple-single-quotes command.insert-heredoc-comment command.align-assignments snippet.raw-javascript snippet.require snippet.interpolated-code snippet.log))

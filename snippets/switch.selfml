@@ -1,0 +1,10 @@
+(name Switch)
+
+(trigger
+    (tab swi))
+
+(only-in source.coffee)
+
+(snippet [switch %{1="object"}
+  when %{2="value"}
+    %{0="# body..."}])

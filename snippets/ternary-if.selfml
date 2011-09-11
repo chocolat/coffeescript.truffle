@@ -1,0 +1,8 @@
+(name [Ternary If])
+
+(trigger
+    (tab ifte))
+
+(only-in source.coffee)
+
+(snippet [if %{1="condition"} then %{2="value"} else %{3="other"}])

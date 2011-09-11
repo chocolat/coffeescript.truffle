@@ -1,0 +1,25 @@
+(trigger
+    (key [[cmd]B]))
+
+(name [Compile and Display JS])
+
+(only-in source.coffee)
+
+(input selection document)
+
+(output html)
+
+(save nothing)
+
+(script [#!/bin/bash
+
+function highlight {
+  test `which pygmentize`
+  if [[ $? -eq 0 ]]; then
+    pygmentize -Onoclasses,nobackground=True,style=autumn,encoding=utf8 -l js -f html
+  else
+    pre
+  fi
+}
+
+${TM_COFFEE:=coffee} -scp --bare | highlight])

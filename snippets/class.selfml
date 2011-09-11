@@ -1,0 +1,12 @@
+(name Class)
+
+(trigger
+    (tab cla))
+
+(only-in source.coffee)
+
+(snippet [class %{1="ClassName"}%{2=" extends %{3="Ancestor"}"}
+
+  %{4="constructor: (%{5="args"}) ->
+    %{6="# body..."}"}
+  %{7}])

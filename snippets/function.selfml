@@ -1,0 +1,11 @@
+(name Function)
+
+(trigger
+    (tab fun))
+
+(only-in source.coffee)
+
+(snippet [(%{1="args"}) ->
+  %{0="# body..."}
+
+])

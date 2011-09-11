@@ -1,0 +1,17 @@
+(trigger
+    (key [[shift][enter]]))
+
+(name [New Function])
+
+(only-in source.coffee)
+
+(input selection word)
+
+(output snippet)
+
+(save nothing)
+
+(script [cat <<SNIPPET
+${TM_SELECTED_TEXT:-$TM_CURRENT_WORD} = (\${1:args}) ->
+  \$0
+SNIPPET])

@@ -1,0 +1,9 @@
+(name [Object comprehension])
+
+(trigger
+    (tab foro))
+
+(only-in source.coffee)
+
+(snippet [for %{1="key"}, %{2="value"} of %{3="Object"}
+  %{0="# body..."}])

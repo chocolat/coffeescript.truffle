@@ -1,0 +1,9 @@
+(name [Else if])
+
+(trigger
+    (tab elif))
+
+(only-in source.coffee)
+
+(snippet [else if %{1="condition"}
+  %{0="# body..."}])

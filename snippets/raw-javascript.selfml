@@ -1,0 +1,8 @@
+(name [Raw javascript])
+
+(trigger
+    (key [[ctrl]J]))
+
+(only-in source.coffee)
+
+(snippet [`%{1="`pbpaste`"}`])

@@ -1,0 +1,8 @@
+(name Unless)
+
+(trigger
+    (tab unl))
+
+(only-in source.coffee)
+
+(snippet [%{1="action"} unless %{2="condition"}])

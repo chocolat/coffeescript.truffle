@@ -1,0 +1,8 @@
+(name log)
+
+(trigger
+    (tab log))
+
+(only-in source.coffee)
+
+(snippet [console.log %{0}])

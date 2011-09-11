@@ -1,0 +1,9 @@
+(name [Array Comprehension])
+
+(trigger
+    (tab fora))
+
+(only-in source.coffee)
+
+(snippet [for %{1="name"} in %{2="array"}
+  %{0="# body..."}])

@@ -1,0 +1,11 @@
+(name [Try .. Catch])
+
+(trigger
+    (tab try))
+
+(only-in source.coffee)
+
+(snippet [try
+  %{1}
+catch %{2="error"}
+  %{3}])

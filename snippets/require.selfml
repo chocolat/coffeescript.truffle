@@ -1,0 +1,8 @@
+(name require)
+
+(trigger
+    (tab req))
+
+(only-in source.coffee)
+
+(snippet [%{2/^.*?([\w_]+).*$/\L$1/} = require %{2="'%{1="sys"}'"}%{3}])

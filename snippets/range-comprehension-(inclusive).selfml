@@ -1,0 +1,9 @@
+(name [Range comprehension (inclusive)])
+
+(trigger
+    (tab forr))
+
+(only-in source.coffee)
+
+(snippet [for %{1="name"} in [%{2="start"}..%{3="finish"}]%{4=" by %{5="step"}"}
+  %{0="# body..."}])

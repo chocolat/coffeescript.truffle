@@ -1,0 +1,9 @@
+(name If)
+
+(trigger
+    (tab if))
+
+(only-in source.coffee)
+
+(snippet [if %{1="condition"}
+  %{0="# body..."}])
