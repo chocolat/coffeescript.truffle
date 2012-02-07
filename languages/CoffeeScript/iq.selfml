@@ -1,13 +1,9 @@
 (detector
     (extension coffee)
-    (extension Cakefile)
-    (extension coffee.erb))
-
-(detector
-    (content-matches [^#!.*\bcoffee]))
+    (extension Cakefile))
 
 (folding
-    (start `^\s*class\s+\S.*$|.*(->|=>)\s*$|.*[\[{]\s*$`)
+    (start `.*(->|=>)\s*$|.*[\[{]\s*$`)
     (stop `^\s*$|^\s*[}\]]\s*$`))
 
 (shell-variables
@@ -25,15 +21,14 @@
 		^\s*
 		(.*class
 		|[a-zA-Z\$_](\w|\$|:|\.)*\s*(?=\:(\s*\(.*\))?\s*((=|-)>\s*$)) # function that is not one line
-		|[a-zA-Z\$_](\w|\$|\.)*\s*(:|=)\s*((if|while)(?!.*?then)|for|$) # assignment using multiline if/while/for
-		|(if|while)\b(?!.*?then)|for\b
-		|(try|finally|catch\s+\S.*)\s*$
-		|.*[-=]>$
-		|.*[\{\[]$)`)
+		|[a-zA-Z\$_](\w|\$|\.)*\s*(?=(?!\::)\:(?!(\s*\(.*\))?\s*((=|-)>))):\s*((if|while)(?!.*?then)|for|$) # assignment using multiline if/while/for
+		|(if|while)(?!.*?then)|for
+		|.*\{$
+		|.*\[$)`)
 
-(in [source.coffee meta.function.coffee]
+(in [source.coffee meta.function]
     (symbol-list
-        (transformation [s/^\s*([a-zA-Z\$_]+)\s*=/$2/])))
+        (transformation [s/^(\s*)([a-zA-Z\$_](\w|\$|:|\.))*\s*:/$1$2/])))
 
 (in [source.coffee entity.name.type.instance]
     (symbol-list))

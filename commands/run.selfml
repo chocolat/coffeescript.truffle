@@ -13,4 +13,6 @@
 
 (script [#!/bin/bash
 
-${TM_COFFEE:=coffee} -s | pre])
+echo "<pre style='font-family:Monaco; font-size: 22px;'>"
+coffee -s
+echo "</pre>"])

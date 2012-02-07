@@ -6,7 +6,7 @@
                 (2 storage.type.function.coffee))))
     (zone meta.class.instance.constructor
         (match
-            (regex [(new)\s+(\w+(?:\.\w*)*)]
+            (regex [(new)\s+(\w+(?:\.\w*)?)]
                 (1 keyword.operator.new.coffee)
                 (2 entity.name.type.instance.coffee))))
     (zone string.quoted.heredoc.coffee
@@ -41,15 +41,11 @@
                     (regex [\\(x\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]|37[0-7]?|[4-7][0-7]?|.)])))))
     (zone comment.block.coffee
         (start
-            (regex [(?<!#)###(?!#)]
+            (regex [###(?!#)]
                 (0 punctuation.definition.comment.coffee)))
         (end
-            (regex [###(?:[ \t]*\n)]
-                (0 punctuation.definition.comment.coffee)))
-        (subzones
-            (zone storage.type.annotation.coffeescript
-                (match
-                    (regex @\w*)))))
+            (regex [###[ \t]*\n]
+                (0 punctuation.definition.comment.coffee))))
     (zone comment.line.coffee
         (match
             (regex [(#).*$\n?]
@@ -63,13 +59,13 @@
             (include @embedded_comment)))
     (zone string.regexp.coffee
         (match
-            (regex [/(?![\s=/*+{}?]).*?[^\\]/[igmy]{0,4}(?![a-zA-Z0-9])])))
+            (regex [/(?![\s/*+{}?]).*?[^\\]/[igmy]{0,4}(?![a-zA-Z0-9])])))
     (zone keyword.control.coffee
         (match
-            (regex [\b(?<![\.\$])(break|by|catch|continue|else|finally|for|in|of|if|return|switch|then|throw|try|unless|when|while|until|loop|do|(?<=for)\s+own)(?!\s*:)\b])))
+            (regex [\b(?<!\.)(break|by|catch|continue|else|finally|for|in|of|if|return|switch|then|throw|try|unless|when|while|until|loop|(?<=for)\s+own)(?!\s*:)\b])))
     (zone keyword.operator.coffee
         (match
-            (regex [and=|or=|!|%|&|\^|\*|\/|\-\-|\-|\+\+|\+|~|===|==|=|!=|!==|<=|>=|<<=|>>=|>>>=|<>|<|>|!|&&|\?|\||\|\||\:|\*=|(?<!\()/=|%=|\+=|\-=|&=|\^=|\b(?<![\.\$])(instanceof|new|delete|typeof|and|or|is|isnt|not)\b])))
+            (regex [and=|or=|!|%|&|\^|\*|\/|\-\-|\-|\+\+|\+|~|===|==|=|!=|!==|<=|>=|<<=|>>=|>>>=|<>|<|>|!|&&|\?|\||\|\||\:|\*=|(?<!\()/=|%=|\+=|\-=|&=|\^=|\b(instanceof|new|delete|typeof|and|or|is|isnt|not)\b])))
     (zone variable.assignment.coffee
         (match
             (regex [([a-zA-Z\$_](\w|\$|\.)*\s*(?!\::)((:)|(=))(?!(\s*\(.*\))?\s*((=|-)>)))]
@@ -92,9 +88,6 @@
     (zone meta.function.coffee
         (match
             (regex [(\s*)(?=[a-zA-Z\$_])([a-zA-Z\$_](\w|\$|:|\.)*\s*(?=[:=](\s*\(.*\))?\s*((=|-)>)))]
-                (3 entity.name.function.coffee)
-                (4 variable.parameter.function.coffee)
-                (5 storage.type.function.coffee)
                 (2 entity.name.function.coffee))))
     (zone storage.type.function.coffee
         (match
@@ -113,9 +106,9 @@
             (regex [\b(?<!\.)(super|this|extends)(?!\s*[:=])\b])))
     (zone meta.class.coffee
         (match
-            (regex [(class\b)\s+([a-zA-Z\$_][\w\.]+)?(?:\s+(extends)\s+([a-zA-Z\$\._][\w\.]*))?]
-                (3 keyword.control.inheritance.coffee)
-                (4 entity.other.inherited-class.coffee)
+            (regex [(class\b)\s+([a-zA-Z\$_]\w+)?(\s+(extends)\s+[a-zA-Z\$_]\w*)?]
+                (3 entity.other.inherited-class.coffee)
+                (4 keyword.control.inheritance.coffee)
                 (1 storage.type.class.coffee)
                 (2 entity.name.type.class.coffee))))
     (zone keyword.other.coffee
@@ -205,5 +198,5 @@
 (collection embedded_comment
     (zone comment.line.coffee
         (match
-            (regex [(?<!\\)(#).*$\n?]
+            (regex [(#).*$\n?]
                 (1 punctuation.definition.comment.coffee)))))

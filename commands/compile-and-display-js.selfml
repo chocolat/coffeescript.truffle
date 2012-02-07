@@ -13,13 +13,6 @@
 
 (script [#!/bin/bash
 
-function highlight {
-  test `which pygmentize`
-  if [[ $? -eq 0 ]]; then
-    pygmentize -Onoclasses,nobackground=True,style=autumn,encoding=utf8 -l js -f html
-  else
-    pre
-  fi
-}
-
-${TM_COFFEE:=coffee} -scp --bare | highlight])
+echo "<pre style='font-family:Menlo; font-size: 22px;'>"
+coffee -scp --bare | sed 's/</\&lt;/g' | sed 's/>/\&gt;/g'
+echo "</pre>"])
