@@ -13,6 +13,11 @@
 
 (script [#!/bin/bash
 
-echo "<pre style='font-family:Menlo; font-size: 22px;'>"
-coffee -scp --bare | sed 's/</\&lt;/g' | sed 's/>/\&gt;/g'
-echo "</pre>"])
+function pre {
+	echo -n '<pre style="word-wrap: break-word;">'
+	perl -pe '$| = 1; s/&/&amp;/g; s/</&lt;/g; s/>/&gt;/g; s/$\\n/<br>/'
+	echo '</pre>'
+}
+
+${TM_COFFEE:=coffee} -scp --bare | pre
+])

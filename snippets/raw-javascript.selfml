@@ -5,4 +5,4 @@
 
 (only-in source.coffee)
 
-(snippet [`%{1="`pbpaste`"}`])
+(snippet [`%{1=`pbpaste`}`])

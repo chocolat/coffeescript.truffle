@@ -5,7 +5,7 @@
 
 (only-in source.coffee)
 
-(snippet [%{1="name"} = (%{2="args"}) ->
+(snippet [(%{1="args"}) ->
   %{0="# body..."}
 
 ])

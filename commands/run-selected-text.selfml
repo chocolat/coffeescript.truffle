@@ -13,5 +13,5 @@
 
 (script [#!/bin/bash
 
-coffee -s
+${TM_COFFEE:=coffee} -s
 ])
